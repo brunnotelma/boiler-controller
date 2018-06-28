@@ -2,41 +2,46 @@ import onionGpio
 import time
 
 rele1 = onionGpio.OnionGpio(0)
-
-# nivel1 = onionGpio.OnionGpio(0)
-# nivel2 = onionGpio.OnionGpio(1)
-# nivel3 = onionGpio.OnionGpio(6)
-# nivel4 = onionGpio.OnionGpio(7)
-# nivel5 = onionGpio.OnionGpio(8)
+rele2 = onionGpio.OnionGpio(1)
+rele3 = onionGpio.OnionGpio(19)
+rele4 = onionGpio.OnionGpio(18)
+rele5 = onionGpio.OnionGpio(2)
+rele6 = onionGpio.OnionGpio(3)
 
 def setup():
-    rele1.setOutputDirection()
-
-# def verificarNivel():
-
+    rele1.setOutputDirection(0)
+    rele2.setOutputDirection(0)
+    rele3.setOutputDirection(0)
+    rele4.setOutputDirection(0)
+    rele5.setOutputDirection(0)
+    rele6.setOutputDirection(0)
 
 def main():
     setup()
-    nivel = 0
+    releStatus = 1
 
-    while True:
-        rele1.setValue(1)
+    while 1:
+        print("Ligando reles..." if releStatus == 1 else "Desligando reles...")
+
+	rele1.setValue(releStatus)
         time.sleep(1)
-        rele1.setValue(0)
+        
+	rele2.setValue(releStatus)
+	time.sleep(1)
 
-        # nivel = verificarNivel()
+	rele3.setValue(releStatus)
+        time.sleep(1)
 
-        # if nivel == 1:
+	rele4.setValue(releStatus)
+        time.sleep(1)
 
-        # elif nivel == 2:
+	rele5.setValue(releStatus)
+	time.sleep(1)
 
-        # elif nivel == 3:
+	rele6.setValue(releStatus)
+	time.sleep(1)
 
-        # elif nivel == 4:
-
-        # elif nivel == 5:
-
-
+	releStatus = int(not releStatus)
 
 if __name__ == '__main__':
     main()
