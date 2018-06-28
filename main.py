@@ -2,12 +2,12 @@ import onionGpio
 import time
 
 reles = {
-    0 : onionGpio.OnionGpio(0)
-    1 : onionGpio.OnionGpio(1)
-    2 : onionGpio.OnionGpio(19)
-    3 : onionGpio.OnionGpio(18)
-    4 : onionGpio.OnionGpio(2)
-    5 : onionGpio.OnionGpio(3)
+    0: onionGpio.OnionGpio(0)
+    1: onionGpio.OnionGpio(1)
+    2: onionGpio.OnionGpio(19)
+    3: onionGpio.OnionGpio(18)
+    4: onionGpio.OnionGpio(2)
+    5: onionGpio.OnionGpio(3)
 }
 
 def setup():
