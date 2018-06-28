@@ -1,4 +1,4 @@
-import onionPy
+import onionGpio
 import time
 
 rele1 = onionGpio.OnionGpio(0)
