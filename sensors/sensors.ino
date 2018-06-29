@@ -21,7 +21,7 @@ int levels[] = {
 };
 
 void loop() {
-    delay(100);
+    delay(50);
 
     // Wait until there is data available
     if (Serial.available() > 0) {

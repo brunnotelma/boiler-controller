@@ -1,3 +1,4 @@
+import serial
 import onionGpio
 import time
 
@@ -34,14 +35,18 @@ def setup():
         relay.setOutputDirection(RELAY_OFF)
 
 def getWaterLevel():
+    # Setup serial port
+    ser = serial.Serial(port='/dev/ttyS1', baudrate=9600, timeout=2)
     waterLevel = 0
+        
+    # Requests water level from Arduino
+    ser.write("water_level")
 
-    for level, sensor in levels.iteritems():
-        isEnabled = sensor.getValue()
-        print("Level " + str(level) + ":" + ("ON" if isEnabled else "OFF"))
-        if isEnabled:
-            waterLevel = level
+    # Read 8 byte response
+    waterLevel = ser.readAll()
+    # ser.cancel_read()
 
+    print("Level: " + waterLevel)
     return waterLevel
 
 def setSolenoidState(relayName, state):
@@ -52,13 +57,6 @@ def setSolenoidState(relayName, state):
 def main():
     setup()
     loop = 0
-
-    print("========= TEST ==========")
-    print("Level 1: " + str(levels[1].getValue()))
-    print("Level 2: " + str(levels[2].getValue()))
-    print("Level 3: " + str(levels[3].getValue()))
-    print("Level 4: " + str(levels[4].getValue()))
-    print("==========================")
 
     while True:
         # 1-sec delay on the beggining of the loop just to decrease computational cost
