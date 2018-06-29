@@ -38,6 +38,7 @@ def getWaterLevel():
 
     for level, sensor in levels.iteritems():
         isEnabled = sensor.getValue()
+        print("Level " + level + ":" + ("ON" if isEnabled else "OFF"))
         if isEnabled:
             waterLevel = level
 
