@@ -63,7 +63,7 @@ def main():
         waterLevel = getWaterLevel()
         print("Level: " + str(waterLevel))
 
-        if waterLevel > 3:
+        if waterLevel >= 3:
             setSolenoidState(GAS_RELAY, RELAY_ON)
 
         if waterLevel < 4:
