@@ -25,12 +25,11 @@ def setup():
         relay.setOutputDirection(RELAY_OFF)
 
 def getWaterLevel():
-    # Setup serial port
-    ser = serial.Serial(port='/dev/ttyS1', baudrate=9600, timeout=2)
     waterLevel = ""
         
     while(not isInt(waterLevel)):
-        # Requests water level from Arduino
+        ser = serial.Serial(port='/dev/ttyS1', baudrate=9600, timeout=2)
+	# Requests water level from Arduino
         ser.write("water_level")
         # Read 8 byte response
         waterLevel = ser.read(8)
