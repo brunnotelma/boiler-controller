@@ -53,6 +53,13 @@ def main():
     setup()
     loop = 0
 
+    print("========= TEST ==========")
+    print("Level 1: " + str(levels[1].getValue()))
+    print("Level 2: " + str(levels[2].getValue()))
+    print("Level 3: " + str(levels[3].getValue()))
+    print("Level 4: " + str(levels[4].getValue()))
+    print("==========================")
+
     while True:
         # 1-sec delay on the beggining of the loop just to decrease computational cost
         time.sleep(2)
