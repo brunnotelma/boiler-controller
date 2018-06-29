@@ -37,12 +37,11 @@ def setup():
 def getWaterLevel():
     # Setup serial port
     ser = serial.Serial(port='/dev/ttyS1', baudrate=9600, timeout=2)
-    waterLevel = 0
+    waterLevel = ""
         
-    # Requests water level from Arduino
-    ser.write("water_level")
-
-    while(waterLevel != "1")
+    while(not isInt(waterLevel))
+        # Requests water level from Arduino
+        ser.write("water_level")
         # Read 8 byte response
         waterLevel = ser.read(8)
         ser.cancel_read()
@@ -79,6 +78,13 @@ def main():
             #     setSolenoidState(GAS_RELAY, RELAY_OFF)
 
     return 0
+
+def isInt(string):
+    try: 
+        int(string)
+        return True
+    except ValueError:
+        return False
 
 def relayTest(relayStatus):
     print("Turning relays " + ("Off" if relayStatus else "On") + "...")

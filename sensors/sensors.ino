@@ -21,22 +21,24 @@ int levels[] = {
 };
 
 void loop() {
-    delay(50);
+    delay(100);
 
     // Wait until there is data available
     if (Serial.available() > 0) {
         readSerial = Serial.readString();
         readSerial.trim();
+        digitalWrite(13, HIGH);
 
         if (readSerial == "water_temperature") {
             // Read water temperature and sends through Serial (RX/TX)
-            Serial.println("60");
+            Serial.print("60");
         }else if(readSerial == "steam_temperature"){
             // Read steam temperature and sends through Serial (RX/TX)
-            Serial.println("75");
+            Serial.print("75");
         }else if(readSerial == "water_level"){
             // Read water level and sends through Serial (RX/TX)
-            Serial.println(getWaterLevel());
+            digitalWrite(13, LOW);
+            Serial.print(getWaterLevel());
         }
     }
 }
@@ -45,7 +47,7 @@ int getWaterLevel() {
     int water_level = 0;
 
     for(int i = 0; i < 4; i++) {
-        delay(50);
+        delay(100);
         
         if(digitalRead(levels[i]) == HIGH){
             water_level = i + 1;
