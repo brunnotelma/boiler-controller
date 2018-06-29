@@ -51,11 +51,12 @@ def setSolenoidState(relayName, state):
 
 def main():
     setup()
+    loop = 0
 
     while True:
         # 1-sec delay on the beggining of the loop just to decrease computational cost
         time.sleep(2)
-        print("\n")
+        print("\n Loop: " + str(++loop))
         waterLevel = getWaterLevel()
 
         if waterLevel > 3:
