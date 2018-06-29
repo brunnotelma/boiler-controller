@@ -54,7 +54,7 @@ def main():
 
     while True:
         # 1-sec delay on the beggining of the loop just to decrease computational cost
-        sleep(1)
+        time.sleep(1)
 
         waterLevel = getWaterLevel()
 
