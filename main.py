@@ -43,8 +43,8 @@ def getWaterLevel():
     ser.write("water_level")
 
     # Read 8 byte response
-    waterLevel = ser.readAll()
-    # ser.cancel_read()
+    waterLevel = ser.readUntil()
+    ser.cancel_read()
 
     print("Level: " + waterLevel)
     return waterLevel

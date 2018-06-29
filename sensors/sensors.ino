@@ -30,13 +30,13 @@ void loop() {
 
         if (readSerial == "water_temperature") {
             // Read water temperature and sends through Serial (RX/TX)
-            Serial.print("60");
+            Serial.println("60");
         }else if(readSerial == "steam_temperature"){
             // Read steam temperature and sends through Serial (RX/TX)
-            Serial.print("75");
+            Serial.println("75");
         }else if(readSerial == "water_level"){
             // Read water level and sends through Serial (RX/TX)
-            Serial.print(getWaterLevel());
+            Serial.println(getWaterLevel());
         }
     }
 }
