@@ -53,6 +53,9 @@ def main():
     setup()
 
     while True:
+        # 1-sec delay on the beggining of the loop just to decrease computational cost
+        sleep(1)
+
         waterLevel = getWaterLevel()
 
         if waterLevel > 3:
