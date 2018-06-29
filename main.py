@@ -39,7 +39,7 @@ def getWaterLevel():
     ser = serial.Serial(port='/dev/ttyS1', baudrate=9600, timeout=2)
     waterLevel = ""
         
-    while(not isInt(waterLevel))
+    while(not isInt(waterLevel)):
         # Requests water level from Arduino
         ser.write("water_level")
         # Read 8 byte response
