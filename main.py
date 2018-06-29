@@ -55,6 +55,8 @@ def setSolenoidState(relayName, state):
 
 def main():
     setup()
+    relayTest(RELAY_ON)
+    relayTest(RELAY_OFF)
 
     while True:
         # 1-sec delay on the beggining of the loop just to decrease computational cost
