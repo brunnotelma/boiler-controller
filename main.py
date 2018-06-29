@@ -11,26 +11,16 @@ WATER_RELAY = 'Water'
 STEAM_RELAY = 'Steam'
 GAS_RELAY = 'Gas'
 
-levels = {
-    1 : onionGpio.OnionGpio(5),
-    2 : onionGpio.OnionGpio(4),
-    3 : onionGpio.OnionGpio(19),
-    4 : onionGpio.OnionGpio(18),
-}
-
 relays = {
     ('open' + WATER_RELAY) : onionGpio.OnionGpio(0),
     ('close' + WATER_RELAY) : onionGpio.OnionGpio(1),
-    ('open' + STEAM_RELAY) : onionGpio.OnionGpio(45),
-    ('close' + STEAM_RELAY) : onionGpio.OnionGpio(46),
+    ('open' + STEAM_RELAY) : onionGpio.OnionGpio(19),
+    ('close' + STEAM_RELAY) : onionGpio.OnionGpio(18),
     ('open' + GAS_RELAY) : onionGpio.OnionGpio(2),
     ('close' + GAS_RELAY) : onionGpio.OnionGpio(3)
 }
 
 def setup():
-    for sensor in levels.itervalues():
-        sensor.setInputDirection()
-
     for relay in relays.itervalues():
         relay.setOutputDirection(RELAY_OFF)
 
