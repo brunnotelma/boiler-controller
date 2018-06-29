@@ -46,8 +46,7 @@ def getWaterLevel():
         waterLevel = ser.read(8)
         ser.cancel_read()
 
-    print("Level: " + waterLevel)
-    return waterLevel
+    return int(waterLevel)
 
 def setSolenoidState(relayName, state):
     # int(not value) inverts a integer (0/1)
@@ -56,16 +55,13 @@ def setSolenoidState(relayName, state):
 
 def main():
     setup()
-    loop = 0
 
     while True:
         # 1-sec delay on the beggining of the loop just to decrease computational cost
-        time.sleep(2)
-
-        loop += 1
-        print("\n Loop: " + str(loop))
+        time.sleep(0.5)
 
         waterLevel = getWaterLevel()
+        print("Level: " + waterLevel)
 
         if waterLevel > 3:
             setSolenoidState(GAS_RELAY, RELAY_ON)
