@@ -31,7 +31,7 @@ def getWaterLevel():
     # Keeps in the loop while value received is not valid
     while(not isInt(waterLevel)):
         ser = serial.Serial(port='/dev/ttyS1', baudrate=9600, timeout=2)
-	# Requests water level from Arduino
+	    # Requests water level from Arduino
         ser.write("water_level")
         # Read 8 byte response
         waterLevel = ser.read(8)
